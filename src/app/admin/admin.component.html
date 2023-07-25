@@ -1,0 +1,61 @@
+<div class="pokemon-grid">
+  <div class="pokemon" *ngFor="let pokemon of pokemons">
+    <ng-container *ngIf="isExternalImage(pokemon.imageUrl)">
+      <img [src]="pokemon.imageUrl" [alt]="pokemon.name" class="pokemon-image">
+    </ng-container>
+    <ng-container *ngIf="!isExternalImage(pokemon.imageUrl)">
+      <img [src]="'/assets/images/' + pokemon.number.toString().padStart(3, '0') + pokemon.name + '.webp'" [alt]="pokemon.name" class="pokemon-image">
+    </ng-container>
+    <p>{{pokemon.name}}</p>
+    <div class="button-container">
+    <button (click)="deletePokemon(pokemon)">Delete</button>
+    <button (click)="selectPokemon(pokemon)">Update</button>
+    <button (click)="duplicatePokemon(pokemon)">Duplicate</button>
+  </div>
+    </div>
+</div>
+
+<div class="pokemon-form">
+  <form [formGroup]="pokemonForm" #formRef="ngForm">
+    <div class="form-row">
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" required>
+      <span class="error-message" *ngIf="formRef.submitted && pokemonForm.get('name')?.errors?.['required']">Name is required</span>
+    </div>
+    <div class="form-row">
+      <label for="hp">HP:</label>
+      <input type="number" id="hp" formControlName="hp" required>
+      <span class="error-message" *ngIf="formRef.submitted && pokemonForm.get('hp')?.errors?.['required']">HP is required</span>
+    </div>
+    <div class="form-row">
+      <label for="attack">Attack:</label>
+      <input type="number" id="attack" formControlName="attack" required>
+      <span class="error-message" *ngIf="formRef.submitted && pokemonForm.get('attack')?.errors?.['required']">Attack is required</span>
+    </div>
+    <div class="form-row">
+      <label for="defense">Defense:</label>
+      <input type="number" id="defense" formControlName="defense" required>
+      <span class="error-message" *ngIf="formRef.submitted && pokemonForm.get('defense')?.errors?.['required']">Defense is required</span>
+    </div>
+    <div class="form-row">
+      <label for="speed">Speed:</label>
+      <input type="number" id="speed" formControlName="speed" required>
+      <span class="error-message" *ngIf="formRef.submitted && pokemonForm.get('speed')?.errors?.['required']">Speed is required</span>
+    </div>
+    <div class="form-row">
+      <label for="imageUrl">Image URL:</label>
+      <input type="text" id="imageUrl" formControlName="imageUrl" required>
+      <div *ngIf="formRef.submitted && pokemonForm.get('imageUrl')?.invalid && pokemonForm.get('imageUrl')?.touched">
+        <span *ngIf="pokemonForm.get('imageUrl')?.hasError('required')">Image URL is required</span>
+        <span *ngIf="pokemonForm.get('imageUrl')?.hasError('pattern')">Invalid image URL</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <button type="button" *ngIf="!selectedPokemon" (click)="createPokemon()" class="button-create">Create</button>
+      <button type="button" *ngIf="selectedPokemon" (click)="updatePokemon()" class="button-create">Update</button>
+      <button type="button" *ngIf="selectedPokemon" (click)="cancelUpdate()" class="button-create">Cancel</button>
+    </div>
+  </form>
+</div>
+
+

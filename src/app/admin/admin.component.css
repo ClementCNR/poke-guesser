@@ -1,0 +1,101 @@
+.pokemon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+  overflow-y: scroll;
+  max-height: 350px;
+  scrollbar-width: none;
+  margin-top: 3%;
+}
+.pokemon-grid::-webkit-scrollbar {
+  display: none;
+}
+.pokemon {
+  flex: 0 0 11.1%;
+  text-align: center;
+  margin: 10px;
+}
+
+.pokemon-image {
+  width: 60px;
+  height: 60px;
+}
+.pokemon-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+.error-message {
+  color: red;
+}
+.pokemon-grid .pokemon .button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.pokemon-grid .pokemon button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pokemon-grid .pokemon button:hover {
+  background-color: #0056b3;
+}
+
+.pokemon-grid .pokemon button:active {
+  background-color: #004080;
+}
+
+.button-create {
+  padding: 10px 20px;
+  background-color: #004080;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-create:hover {
+  background-color: #004080;
+}

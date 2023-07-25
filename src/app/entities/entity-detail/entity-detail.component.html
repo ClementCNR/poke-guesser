@@ -1,0 +1,13 @@
+<div class="container">
+  <img class="pokemon-image" [src]="'/assets/images/' + pokemon.number.toString().padStart(3, '0') + pokemon.name + '.webp'" [alt]="pokemon.name">
+  <h2>{{ pokemon.name }}</h2>
+  <div class="pokemon-details">
+    <p><strong>HP:</strong> {{ pokemon.hp }}</p>
+    <p><strong>Attack:</strong> {{ pokemon.attack }}</p>
+    <p><strong>Defense:</strong> {{ pokemon.defense }}</p>
+    <p><strong>Speed:</strong> {{ pokemon.speed }}</p>
+    <p><strong>Type:</strong> {{ pokemon.type1 }}, {{ pokemon.type2 }}</p>
+    <p><strong>Height:</strong> {{ pokemon.height }}</p>
+    <p><strong>Weight:</strong> {{ pokemon.weight }}</p>
+  </div>
+</div>

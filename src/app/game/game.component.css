@@ -1,0 +1,174 @@
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+  overflow-y: scroll;
+  max-height: 450px;
+  scrollbar-width: none;
+}
+
+.pokemon-container::-webkit-scrollbar {
+  display: none;
+}
+
+.pokemon {
+  width: calc(100% / 9);
+  text-align: center;
+  margin: 10px;
+}
+
+.pokemon img {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.guess-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+}
+
+.guess-input {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  width:100%
+}
+
+.input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.submit-guess-button {
+  margin-left: 10px;
+  padding: 8px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.higher::after {
+  content: ' ↑';
+  color: green;
+}
+
+.lower::after {
+  content: ' ↓';
+  color: red;
+}
+
+.pokemon-columns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-weight: bold;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 1.5%;
+}
+.pokemon-columns {
+  display: flex;
+  justify-content: space-around;
+  width: 45%;
+}
+.stats-columns {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.column {
+  flex-grow: 1;
+  text-align: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.submitted img {
+  filter: grayscale(100%);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mismatched img {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+.game-over-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.game-over-message h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+
+.pokemon-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fade-in-out 4s infinite;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.restart-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  border-radius: 12px;
+}
+
+.restart-button:hover {
+  background-color: #45a049;
+}
+

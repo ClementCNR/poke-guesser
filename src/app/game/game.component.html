@@ -1,0 +1,41 @@
+<div class="container">
+  <div *ngIf="gameEnded" class="game-over-message">
+    <h2 *ngIf="isGameWon">Congratulations! You guessed it right!</h2>
+    <h2 *ngIf="!isGameWon">Game Over! The correct Pokemon was {{pokemonToGuess.name}}</h2>
+    <div class="pokemon-image">
+      <img [src]="'/assets/images/' + pokemonToGuess.number.toString().padStart(3, '0') + pokemonToGuess.name + '.webp'" [alt]="pokemonToGuess.name" [ngClass]="{'fade-in': showPokemonImage}">
+    </div>
+    <button class="restart-button" (click)="restartGame()">Redémarrer la partie</button>
+
+  </div>
+  <div *ngIf="!gameEnded"class="pokemon-container">
+    <div class="pokemon" *ngFor="let pokemon of pokemonData" (click)="selectPokemon(pokemon)">
+      <img [src]="'/assets/images/' + pokemon.number.toString().padStart(3, '0') + pokemon.name + '.webp'" [alt]="pokemon.name">
+      <p>{{pokemon.name}}</p>
+    </div>
+  </div>
+  <div class="pokemon-columns">
+    <div class="column">Name</div>
+    <div class="column">HP</div>
+    <div class="column">Attack</div>
+    <div class="column">Defense</div>
+    <div class="column">Speed</div>
+  </div>
+  <div class="guess-input-container">
+    <div class="guess-input" *ngFor="let guess of guesses; let i = index">
+      <ng-container *ngIf="guess !== 'Submitted'">
+        <div class="input-container">
+          <input class="input" [value]="guess" id="guessInput{{i}}" placeholder="Guess #{{i + 1}}..." readonly>
+          <button class="submit-guess-button" [disabled]="i !== currentGuessIndex" [ngClass]="{'disabled': i !== currentGuessIndex}" (click)="submitGuess(i, guess)">✔</button>
+        </div>
+      </ng-container>
+      <div *ngIf="guess === 'Submitted'" class="stats-columns">
+        <div class="column">{{submittedPokemon[i].name}}</div>
+        <div class="column" [ngClass]="{'higher': submittedPokemon[i].hp > pokemonToGuess.hp, 'lower': submittedPokemon[i].hp < pokemonToGuess.hp}">{{submittedPokemon[i].hp}}</div>
+        <div class="column" [ngClass]="{'higher': submittedPokemon[i].attack > pokemonToGuess.attack, 'lower': submittedPokemon[i].attack < pokemonToGuess.attack}">{{submittedPokemon[i].attack}}</div>
+        <div class="column" [ngClass]="{'higher': submittedPokemon[i].defense > pokemonToGuess.defense, 'lower': submittedPokemon[i].defense < pokemonToGuess.defense}">{{submittedPokemon[i].defense}}</div>
+        <div class="column" [ngClass]="{'higher': submittedPokemon[i].speed > pokemonToGuess.speed, 'lower': submittedPokemon[i].speed < pokemonToGuess.speed}">{{submittedPokemon[i].speed}}</div>
+      </div>
+    </div>
+  </div>
+</div>
